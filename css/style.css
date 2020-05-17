@@ -13,24 +13,72 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     margin: 0;
+    /* background-color: red; */
+    list-style-type: none;
+    padding: 8px;
+   
 }
 
-#actions {
-    /* position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    margin: 8px; */
-    /* background-color: #dddddd;
-    border-radius: 10px;
-    border: 2px solid #8d8b8b; */
+/* #todo-list li input[type=checkbox] {
+    background-color: red;
+    display: none;
+}
+ */
 
-    /* margin: 10px; */
-    /* position: absolute; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    /* width: 300px; */
+#todo-list li {
+    color: #333;
+    margin: 8px;
+    padding: 8px;
+
+    height: 30px;
+    border: 2px solid #ededed;
+    border-radius: 8px;
+    font-weight: bolder;
+    font-size: 24px;
+    word-break: break-all; /* wrap extended text*/
+
+    position: relative;
+    
+}
+
+
+#todo-list li button {
+    float: left;
+    /* margin: 8px; */
+
+    margin-right: 6px;
+    margin-left: 4px;
+
+    color: #333;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    outline-width: 0;
+    border: 2px solid #333;
+    background-color: transparent;
+    
+}
+#todo-list li button:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    transition: 0.3s all ease-in;
+}
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+#todo-list li button:hover ~ span {
+    color: rgba(51, 51, 51, 0.5) ;
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 0, 0, 0.5);
+    text-decoration-style: 2px solid;
+    transition:  0.3s all ease-in;
+    transition-timing-function: ease;
 }
 
 footer {
@@ -47,16 +95,13 @@ footer {
     z-index: 10;
 }
 
-#new-todo {
-    /* width: 70%; */
-}
 #addToDo {
     width: 15%;
     padding: 6.5px 10px;
     /* font: 15px/24px "Lato", Arial, sans-serif; */
     /* font: 18px/27px "Lato", Arial, sans-serif; */
 
-    border: 2px solid black;
+    border: 2px solid #333;
     background-color: white;
     color: black;
     border-radius: 50%;

@@ -25,17 +25,26 @@ function update() {
     for (let counter in todos) {
       let item = todos[counter];
       let li = document.createElement("li");
-      let text = document.createElement("span");
+      let div = document.createElement("div");
+      div.classList.add("vertical-center")
       let button = document.createElement("button");
-      button.innerHTML = "X";
+      let text = document.createElement("span");
+      // let checkbox = document.createElement("input");
+      // checkbox.type = 'checkbox';
+      // button.innerHTML = "X";
+      // let img = document.createElement("img")
+      // img.src="icons/add_circle_outline-24px.svg"
+      // button.appendChild(img)
       button.dataset["id"] = counter;
       button.onclick = function (item) {
         let counter = item.currentTarget.dataset["id"];
         deleteItem(counter);
       };
       text.innerHTML = item;
-      li.appendChild(text);
-      li.appendChild(button);
+
+      div.appendChild(button);
+      div.appendChild(text);
+      li.appendChild(div);
       todolist.appendChild(li);
     }
   });
@@ -80,9 +89,9 @@ addToDo.onclick = function (element) {
 };
 
 var input = document.getElementById("new-todo");
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("addToDo").click();
+    event.preventDefault();
+    document.getElementById("addToDo").click();
   }
 });
