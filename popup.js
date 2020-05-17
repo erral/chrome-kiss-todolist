@@ -26,7 +26,7 @@ function update() {
       let item = todos[counter];
       let li = document.createElement("li");
       let div = document.createElement("div");
-      div.classList.add("vertical-center")
+      div.classList.add("vertical-center");
       let button = document.createElement("button");
       let text = document.createElement("span");
       button.dataset["id"] = counter;
@@ -39,7 +39,7 @@ function update() {
       // clicked_li = document.querySelectorAll(`[data-id="${counter}"]`)[0]
       // console.log("clicked_li: ", clicked_li)
       if (item == new_todo) {
-        li.classList.add("animate__animated", "animate__backInLeft")
+        li.classList.add("animate__animated", "animate__backInLeft");
         new_todo = null;
       }
       div.appendChild(button);
@@ -51,7 +51,8 @@ function update() {
 }
 
 function deleteItem(counter) {
-  clicked_li = document.querySelectorAll(`[data-id="${counter}"]`)[0].parentElement.parentElement;
+  clicked_li = document.querySelectorAll(`[data-id="${counter}"]`)[0]
+    .parentElement.parentElement;
   clicked_li.classList.add("animate__animated", "animate__backOutRight");
   setTimeout(() => {
     chrome.storage.sync.get({ todos: Array() }, (result) => {
@@ -64,7 +65,7 @@ function deleteItem(counter) {
       }
       saveItems(new_todos);
     });
-  }, 500)
+  }, 500);
 }
 
 function saveItems(items) {
@@ -77,8 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
   update();
 });
 
-let addToDo = document.getElementById("addToDo");
-addToDo.onclick = function (element) {
+let form = document.getElementById("new-todo-form");
+form.onsubmit = function (e) {
+  e.preventDefault();
   let todo = document.getElementById("new-todo");
 
   chrome.storage.sync.get({ todos: Array() }, (result) => {
@@ -94,10 +96,10 @@ addToDo.onclick = function (element) {
   });
 };
 
-var input = document.getElementById("new-todo");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("addToDo").click();
-  }
-});
+// var input = document.getElementById("new-todo");
+// input.addEventListener("keyup", function (event) {
+//   if (event.keyCode === 13) {
+//     event.preventDefault();
+//     document.getElementById("addToDo").click();
+//   }
+// });
