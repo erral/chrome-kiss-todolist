@@ -13,25 +13,13 @@
 //     });
 //   });
 // };
-// import  {array_move}  from './js/utils.js';
-let imported = document.createElement('script');
-imported.src = 'js/utils.js';
-document.head.appendChild(imported);
 
-let el = document.getElementById('todo-list');
-let sortable = Sortable.create(el, {
-  animation: 150,
-  ghostClass: 'reorder-ghost',
-  // Element dragging ended
-  onEnd: function (/**Event*/evt) {
-   let new_todo_list = new array_move(todos, evt.oldIndex, evt.newIndex);
-   saveItems(new_todo_list);
-  },
-});
-
+// let imported = document.createElement('script');
+// imported.src = 'js/utils.js';
+// document.head.appendChild(imported);
 
 let new_todo = null;
-let todos = Array()
+let todos = Array();
 function update() {
   let todolist = document.getElementById("todo-list");
   while (todolist.firstChild) {
@@ -112,3 +100,17 @@ form.onsubmit = function (e) {
     }
   });
 };
+
+
+// Sortable List
+let el = document.getElementById('todo-list');
+Sortable.create(el, {
+  animation: 150,
+  ghostClass: 'reorder-ghost',
+  // Element dragging ended
+  onEnd: function (/**Event*/evt) {
+   let new_todo_list = new array_move(todos, evt.oldIndex, evt.newIndex);
+   saveItems(new_todo_list);
+  },
+});
+// Sortable List
