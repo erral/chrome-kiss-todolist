@@ -13,7 +13,25 @@
 //     });
 //   });
 // };
+// import  {array_move}  from './js/utils.js';
+let imported = document.createElement('script');
+imported.src = 'js/utils.js';
+document.head.appendChild(imported);
+
+let el = document.getElementById('todo-list');
+let sortable = Sortable.create(el, {
+  animation: 150,
+  ghostClass: 'reorder-ghost',
+  // Element dragging ended
+  onEnd: function (/**Event*/evt) {
+   let new_todo_list = new array_move(todos, evt.oldIndex, evt.newIndex);
+   saveItems(new_todo_list);
+  },
+});
+
+
 let new_todo = null;
+let todos = Array()
 function update() {
   let todolist = document.getElementById("todo-list");
   while (todolist.firstChild) {
@@ -21,7 +39,7 @@ function update() {
   }
 
   chrome.storage.sync.get({ todos: Array() }, (result) => {
-    let todos = result["todos"];
+    todos = result["todos"];
     for (let counter in todos) {
       let item = todos[counter];
       let li = document.createElement("li");
@@ -36,8 +54,6 @@ function update() {
       };
       text.innerHTML = item;
 
-      // clicked_li = document.querySelectorAll(`[data-id="${counter}"]`)[0]
-      // console.log("clicked_li: ", clicked_li)
       if (item == new_todo) {
         li.classList.add("animate__animated", "animate__backInLeft");
         new_todo = null;
@@ -49,6 +65,7 @@ function update() {
     }
   });
 }
+
 
 function deleteItem(counter) {
   clicked_li = document.querySelectorAll(`[data-id="${counter}"]`)[0]

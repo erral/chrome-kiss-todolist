@@ -7,26 +7,31 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
 />
+
+<script src="js/sortable.min.js"></script>
 </head>
 
 <body>
   <div id="items">
     <ul id="todo-list">
-  </div>
-
-  <footer>
-    <div id="actions">
-      <div class="input-container">
-        <form id="new-todo-form">
-          <input class="effect-22" type="text" id="new-todo" placeholder="Enter your todo here">
-          <button id="addToDo" type="submit"><img src="icons/add_circle_outline-24px.svg" alt=""></button>
-        </form>
-      </div>
-
     </div>
-  </footer>
+    
+    <footer>
+      <div id="actions">
+        <div class="input-container">
+          <form id="new-todo-form">
+            <input class="effect-22" type="text" id="new-todo" placeholder="Enter your todo here">
+            <button id="addToDo" type="submit"><img src="icons/add_circle_outline-24px.svg" alt=""></button>
+          </form>
+        </div>
+        
+      </div>
+    </footer>
+    
+    <script src="popup.js"></script>
+    <script type="module" src="./js/utils.js"></script>
 
-  <script src="popup.js"></script>
+
 </body>
 
 </html>
